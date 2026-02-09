@@ -1,0 +1,74 @@
+﻿@model Mission06_Briggs.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Form";
+}
+
+<div class="container">
+    <h1>Add a Movie to the Collection</h1>
+
+    <form method="post">
+        <!-- Validation Summary - shows all errors -->
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!-- Title -->
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <!-- Year -->
+        <div class="mb-3">
+            <label asp-for="Year" class="form-label">Year</label>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+
+        <!-- Director -->
+        <div class="mb-3">
+            <label asp-for="Director" class="form-label">Director</label>
+            <input asp-for="Director" class="form-control" />
+            <span asp-validation-for="Director" class="text-danger"></span>
+        </div>
+
+        <!-- Rating Dropdown -->
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label">Rating</label>
+            <select asp-for="Rating" class="form-control">
+                <option value="">-- Select Rating --</option>
+                <option value="G">G</option>
+                <option value="PG">PG</option>
+                <option value="PG-13">PG-13</option>
+                <option value="R">R</option>
+            </select>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+
+        <!-- Edited -->
+        <div class="mb-3 form-check">
+            <input asp-for="Edited" class="form-check-input" />
+            <label asp-for="Edited" class="form-check-label">Edited</label>
+        </div>
+
+        <!-- Lent To -->
+        <div class="mb-3">
+            <label asp-for="LentTo" class="form-label">Lent To (Optional)</label>
+            <input asp-for="LentTo" class="form-control" />
+        </div>
+
+        <!-- Notes -->
+        <div class="mb-3">
+            <label asp-for="Notes" class="form-label">Notes (Max 25 characters)</label>
+            <input asp-for="Notes" class="form-control" maxlength="25" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
