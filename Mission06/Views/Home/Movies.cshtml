@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Mission06_Briggs.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movie Collection";
+}
+
+<div class="container">
+    <h1>Joel's Movie Collection</h1>
+
+    <p>
+        <a asp-action="MovieForm" class="btn btn-success">Add New Movie</a>
+    </p>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Category</th>
+                <th>Edited</th>
+                <th>Copied to Plex</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Year</td>
+                    <td>@movie.Director</td>
+                    <td>@movie.Rating</td>
+                    <td>@movie.Category?.CategoryName</td>
+                    <td>@(movie.Edited == 1 ? "Yes" : "No")</td>
+                    <td>@(movie.CopiedToPlex == 1 ? "Yes" : "No")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@movie.MovieId" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@movie.MovieId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

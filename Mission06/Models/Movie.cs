@@ -7,22 +7,35 @@ namespace Mission06_Briggs.Models
 		// Primary Key
 		public int MovieId { get; set; }
 
-		// Required fields - initialized to empty string to avoid nullable warnings
+		// Required fields
 		[Required]
 		public string Title { get; set; } = string.Empty;
 
 		[Required]
+		[Range(1888, 9999, ErrorMessage = "Year must be 1888 or later")]
 		public int Year { get; set; }
 
+		// Nullable - some old movies might have NULL
+		public string? Director { get; set; }
+
+		// Nullable - some old movies might have NULL
+		public string? Rating { get; set; }
+
+		// Foreign key to Categories table
 		[Required]
-		public string Director { get; set; } = string.Empty;
+		public int CategoryId { get; set; }
+
+		// Navigation property
+		public Category? Category { get; set; }
+
+		// Required fields (stored as INTEGER: 0 or 1)
+		[Required]
+		public int Edited { get; set; }
 
 		[Required]
-		public string Rating { get; set; } = string.Empty;
+		public int CopiedToPlex { get; set; }
 
 		// Optional fields
-		public bool Edited { get; set; }
-
 		public string? LentTo { get; set; }
 
 		[MaxLength(25)]

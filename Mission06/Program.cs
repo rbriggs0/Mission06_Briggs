@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 // Configure the database connection
 // This tells the app to use SQLite and where to store the database file
 builder.Services.AddDbContext<MovieContext>(options =>
-	options.UseSqlite("Data Source=MovieCollection.sqlite"));
+	options.UseSqlite("Data Source=JoelHiltonMovieCollection.sqlite"));
 
 var app = builder.Build();
 

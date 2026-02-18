@@ -1,14 +1,17 @@
 ﻿@model Mission06_Briggs.Models.Movie
 
 @{
-    ViewData["Title"] = "Add Movie";
+    ViewData["Title"] = "Edit Movie";
 }
 
 <div class="container">
-    <h1>Add a Movie to the Collection</h1>
+    <h1>Edit Movie</h1>
 
     <form method="post">
-        <!-- Validation Summary - shows all errors -->
+        <!-- Hidden field to preserve the MovieId -->
+        <input type="hidden" asp-for="MovieId" />
+
+        <!-- Validation Summary -->
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <!-- Title -->
@@ -32,7 +35,7 @@
             <span asp-validation-for="Director" class="text-danger"></span>
         </div>
 
-        <!-- Rating Dropdown -->
+        <!-- Rating -->
         <div class="mb-3">
             <label asp-for="Rating" class="form-label">Rating</label>
             <select asp-for="Rating" class="form-control">
@@ -45,7 +48,7 @@
             <span asp-validation-for="Rating" class="text-danger"></span>
         </div>
 
-        <!-- NEW: Category Dropdown -->
+        <!-- Category -->
         <div class="mb-3">
             <label asp-for="CategoryId" class="form-label">Category</label>
             <select asp-for="CategoryId" class="form-control">
@@ -58,7 +61,7 @@
             <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
 
-        <!-- Edited Dropdown (Yes/No instead of checkbox) -->
+        <!-- Edited -->
         <div class="mb-3">
             <label asp-for="Edited" class="form-label">Edited</label>
             <select asp-for="Edited" class="form-control">
@@ -68,7 +71,7 @@
             <span asp-validation-for="Edited" class="text-danger"></span>
         </div>
 
-        <!-- NEW: Copied to Plex -->
+        <!-- Copied to Plex -->
         <div class="mb-3">
             <label asp-for="CopiedToPlex" class="form-label">Copied to Plex</label>
             <select asp-for="CopiedToPlex" class="form-control">
@@ -90,7 +93,7 @@
             <input asp-for="Notes" class="form-control" maxlength="25" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Add Movie</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
         <a asp-action="Movies" class="btn btn-secondary">Cancel</a>
     </form>
 </div>

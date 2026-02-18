@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 namespace Mission06_Briggs.Models
 {
 	// This class represents the database context
@@ -6,13 +7,14 @@ namespace Mission06_Briggs.Models
 	public class MovieContext : DbContext
 	{
 		// Constructor - required for dependency injection
-		// This allows the application to automatically create the context when needed
 		public MovieContext(DbContextOptions<MovieContext> options) : base(options)
 		{
 		}
 
-		// DbSet represents a table in the database
-		// This creates a "Movies" table with columns based on the Movie model
+		// DbSet for Movies table
 		public DbSet<Movie> Movies { get; set; }
+
+		// NEW: DbSet for Categories table
+		public DbSet<Category> Categories { get; set; }
 	}
 }

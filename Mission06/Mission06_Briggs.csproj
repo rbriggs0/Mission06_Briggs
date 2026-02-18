@@ -20,4 +20,10 @@
     <PackageReference Include="SQLitePCLRaw.core" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="JoelHiltonMovieCollection.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
